@@ -8,6 +8,8 @@ SimpleRobotSimulator is a simulation engine that takes in joint parameters for R
 pip3 install -r requirements.txt
 ```
 ## Usage
+Example used in Driver
+
 Create a simple RR robot with frame parameters t1 (theta 1) and t2 (theta 2)
 ```python3
 frame1 = FrameParameters.without_offset("t1",0,1,0)
