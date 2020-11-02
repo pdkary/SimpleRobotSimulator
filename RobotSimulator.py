@@ -220,8 +220,6 @@ if __name__ == '__main__':
     # frame1_array = [["t1",0,1,0],[90,0,0,0]]
     frame1 = FrameParameters.without_offset("t1",0,1,0)
     frame2 = FrameParameters.without_offset("t2",0,1,0)
-    frame3 = FrameParameters.without_offset("t3",0,1,0)
-    frame4 = FrameParameters.without_offset("t4",0,1,0)
 
     # frame2_array = [["t2",0,1,0],[90,0,0,0]]
     # frame2 = FrameParameters.from_2d_array(frame2_array)
@@ -230,12 +228,10 @@ if __name__ == '__main__':
     RS = RobotSimulator()
     RS.add_frame(frame1)
     RS.add_frame(frame2)
-    RS.add_frame(frame3)
-    RS.add_frame(frame4)
 
-    joint_0 = {"t1":0,"t2":0,"t3":0,"t4":0}
-    vel = {"t1":1,"t2":1,"t3":1,"t4":1}
+    joint_initial_states = {"t1":0,"t2":0}
+    joint_velocities = {"t1":1,"t2":1} # velocities in radians/sec
 
-    RS.simulate(joint_0,vel,100,.1)
+    RS.simulate(joint_initial_states,joint_velocities,100,.1)
     RS.write_data_to_csv("rs.csv")
     RS.plot_data({"x":"x","y":"y"})

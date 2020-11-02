@@ -20,11 +20,14 @@ RS.add_frame(frame2)
 joint_initial_states = {"t1":0,"t2":0}
 joint_velocities = {"t1":1,"t2":1} # velocities in radians/sec
 
-RS.simulate(joint_0,vel,100,.1)
+RS.simulate(joint_initial_states,joint_velocities,100,.1)
 RS.write_data_to_csv("rs.csv")
-RS.plot_data({"x":"x","y":"y"})
+RS.plot_data({"x":"x","y":"y"}) # set plotly to show x,y axis
 ```
 This call will simulator the motion of each joint, for 100 steps of timestep .1 (10 seconds of motion), save the data to a csv file, and then produce an interactive plotly animation in your web browser
+
+## Result
+![](images/RRexample.gif)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
