@@ -214,24 +214,3 @@ class RobotSimulator:
         max_y = max([float(y) for y in self.data[axis_dict["y"]]])
         fig = px.scatter(df,x=axis_dict["x"],y=axis_dict["y"],animation_frame="t",animation_group="joint",color="color",range_x=[-max_x-1,max_x+1],range_y=[-max_y-1,max_y+1])
         fig.show()        
-
-
-if __name__ == '__main__':
-    # frame1_array = [["t1",0,1,0],[90,0,0,0]]
-    frame1 = FrameParameters.without_offset("t1",0,1,0)
-    frame2 = FrameParameters.without_offset("t2",0,1,0)
-
-    # frame2_array = [["t2",0,1,0],[90,0,0,0]]
-    # frame2 = FrameParameters.from_2d_array(frame2_array)
-    # frame2 = FrameParameters.without_offset("t2",0,1,0)
-    
-    RS = RobotSimulator()
-    RS.add_frame(frame1)
-    RS.add_frame(frame2)
-
-    joint_initial_states = {"t1":0,"t2":0}
-    joint_velocities = {"t1":1,"t2":1} # velocities in radians/sec
-
-    RS.simulate(joint_initial_states,joint_velocities,100,.1)
-    RS.write_data_to_csv("rs.csv")
-    RS.plot_data({"x":"x","y":"y"})
