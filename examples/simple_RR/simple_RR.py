@@ -1,3 +1,5 @@
+import sys
+sys.path.append("../../")
 from RobotSimulator import FrameParameters,RobotSimulator
 
 if __name__ == '__main__':
@@ -12,5 +14,5 @@ if __name__ == '__main__':
     joint_velocities = {"t1":1,"t2":1} # velocities in radians/sec
 
     RS.simulate(joint_initial_states,joint_velocities,100,.1)
-    RS.write_data_to_csv("rs.csv")
+    RS.write_data_to_csv("simpleRR.csv")
     RS.plot_data({"x":"x","y":"y"})
