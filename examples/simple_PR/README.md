@@ -14,17 +14,19 @@ frame2 = FrameParameters.without_offset(0,"d2",0,0)
 
 here `t1` and `t2` will be interpreted as symbols, to be varied by the simulator
 
-we can then set up the simulator by adding these frames
+we can then set up the Robot by adding these frames
 ```python3
-RS = RobotSimulator()
-RS.add_frame(frame1)
-RS.add_frame(frame2)
+robot = Robot()
+robot.add_frame(frame1)
+robot.add_frame(frame2)
 ```
 
-And finally, all we need to do is set initial positions, and the velocities of the joint variables. In this case, since both joints are revolute, both are in radians / second
+And finally, all we need to do is initialize the simulator, set initial positions, and the velocities of the joint variables. In this case, joint one is in radians/sec, and joint 2 is in m/s
 ```python3
+RS = RobotSimulator(robot)
+
 joint_initial_states = {"t1":0,"d2":1}
-joint_velocities = {"t1":1,"d2":1} # velocities in radians/sec or m/sec
+joint_velocities = {"t1":1,"d2":1}
 
 RS.simulate(joint_initial_states,joint_velocities,100,.1)
 ```
